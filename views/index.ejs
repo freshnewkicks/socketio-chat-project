@@ -48,7 +48,7 @@
     socket.on('chat message', function(msg) {
             let item = document.createElement('li');
             item.innerHTML =
-                `<u style="color: rgb(121, 30, 30)">${name.value}</u>` + `${msg}`
+                `<u style="color: rgb(121, 30, 30)">${socket.id}</u>` + `${msg}`
             messages.appendChild(item);
             window.scrollTo(0, document.body.scrollHeight);
 
