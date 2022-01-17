@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('chat message', (msg) => {
-    io.emit('chat message', `: ${msg}`);
+    io.emit('chat message', `\`<u style="color: rgb(121, 30, 30)">${socket.id}</u>\`: ${msg}`);
   });
 });
 
