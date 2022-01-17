@@ -23,12 +23,8 @@ io.on('connection', (socket) => {
   });
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  if (process.env.PORT){
-    console.log(`${process.env.PORT}`)
-  } else {
-    console.log(`server listening ${process.env.PORT}`);
-  }
+server.listen(process.env.PORT || 3000, () => {
+  console.log('server listening');
 });
 
 module.exports = app;
