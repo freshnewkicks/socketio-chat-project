@@ -13,15 +13,25 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+const history = [];
+
 io.on('connection', (socket) => {
   console.log('a user connected');
+    for (hist of history) {
+      io.emit('chat message', hist);
+    }
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
+
   socket.on('chat message', (msg) => {
+    history.push(msg);
+    console.log(history);
     io.emit('chat message', msg);
   });
 });
+
 
 server.listen(process.env.PORT || 3000, () => {
   console.log('server listening');
