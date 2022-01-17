@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
   });
 
   io.once('connect', () => {
-    io.emit('chat message', ': test')
+    io.emit('chat message', ': Hello! I am new!')
   })
 
   socket.on('disconnect', () => {
