@@ -12,20 +12,28 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
   res.render('index');
 });
-
-const history = [];
+var history = [];
+var userNames = {};
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+
+  socket.on('setSocketId', function(data) {
+    var userName = data.name;
+    var userId = data.userId;
+    userNames[userName] = userId;
+  });
+
+  io.once('connect', () => {
+    io.emit('chat message', ': test')
+  })
 
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
 
   socket.on('chat message', (msg) => {
-    history.push(msg);
-    console.log(history);
-    io.emit('chat message', msg);
+    io.emit('chat message', `: ${msg}`);
   });
 });
 
