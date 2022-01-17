@@ -17,12 +17,6 @@ const history = [];
 
 io.on('connection', (socket) => {
   console.log('a user connected');
-  socket.once('chat message', () => {
-    for (hist of history) {
-      io.emit('chat message', hist);
-    }
-  })
-
 
   socket.on('disconnect', () => {
     console.log('user disconnected');
